@@ -1,0 +1,35 @@
+﻿@model EmployeeCensus.Application.Employees.Models.CreateEmployeeDto
+
+<h2>Add Employee</h2>
+
+<form asp-action="AddEmployee" method="post">
+    <div>
+        <label>First Name</label>
+        <input asp-for="FirstName" />
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input asp-for="LastName" />
+    </div>
+    <div>
+        <label>Age</label>
+        <input asp-for="Age" type="number" />
+    </div>
+    <div>
+        <label>Gender</label>
+        <select asp-for="Gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </div>
+    <div>
+        <label>Department</label>
+        <select asp-for="DepartmentId">
+            @foreach (var department in ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit">Add Employee</button>
+</form>
